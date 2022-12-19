@@ -1,4 +1,6 @@
 import '../style.css';
+import keplerImg from './assets/kepler.svg';
+import eccenImg from './assets/eccentricity.svg';
 import kepler from './kepler';
 import eccentricity from './eccentricity';
 
@@ -22,7 +24,7 @@ document.querySelector('#app').innerHTML = `
           <div class="row row-cols-2">
             <div class="col-5 formula">
               <p>kepler's first law is given as...</p <br />
-              <img src='../assets/kepler.svg' class='rounded mx-auto d-block'>
+              <img src='${keplerImg}' class='rounded mx-auto d-block'>
               <p>where...</p>
 
               <table class='table table-bordered text-center'>
@@ -107,7 +109,7 @@ document.querySelector('#app').innerHTML = `
           <div class="row row-cols-2">
             <div class="col-5 formula-e">
               <p> eccentricity (e) is given as...</p <br />
-              <img src='../assets/eccentricity.svg' class='rounded mx-auto d-block'>
+              <img src='${eccenImg}' class='rounded mx-auto d-block'>
               <p>where...</p>
 
               <table class='table table-bordered text-center'>
