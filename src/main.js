@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', (ready) => {
     document.getElementById('k:o').value = '';
 
     const r = kepler.calculator(+a, +e, +theta);
-    keplerPara.innerHTML = `when a = ${a}, e = ${e} and &Theta; = ${theta}, r = ${r}`;
+    keplerPara.innerHTML = `when a = ${a} km, e = ${e} and &Theta; = ${theta}&#176;, r = ${r} km`;
   });
 
   eccenForm.addEventListener('submit', (evt) => {
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', (ready) => {
     document.getElementById('e:b').value = '';
 
     const e = eccentricity.calculator(a, b);
-    eccenPara.innerHTML = `when a = ${a} and b = ${b}, e ${
+    eccenPara.innerHTML = `when a = ${a} km and b = ${b} km, e ${
       typeof e === 'number' ? ' = ' + e : e
     }`;
   });
