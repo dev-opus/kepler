@@ -7,9 +7,9 @@ function calculator(a, b) {
 
   if (sub < 0) {
     return 'could not be determined because of negative sign in square-root';
+  } else {
+    return +Math.sqrt(sub).toFixed(3);
   }
-
-  return Math.sqrt(sub).toFixed(3);
 }
 
 export default { calculator };
