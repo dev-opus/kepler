@@ -56,34 +56,39 @@ document.querySelector('#app').innerHTML = `
             </div>
 
             <div class="col-7">
-              <div class="row row-cols-2 g-2 calc">
-                <div class="col-6 form-col">
+              <div class="row row-cols-2 calc">
+                <div class="col form-col">
                   <form class='mt-3' id='f:k'>
                     <p>Use the form below to calculate radius of an ellipse of a planet using Kepler's First Law</p>
 
-                    <div class='mb-2'>
-                      <label for='a:semi-major axis' class='form-label'> semi-major axis (a) </label>
+                    <div class='mb-4 input-group'>
+                      <span class='input-group-text'>a</span>
                       <input type='number' class='form-control' id='k:a' required step="0.0001">
+                      <span class='input-group-text'>km</span>
                     </div>
 
-                    <div class="mb-2">
-                      <label for='e:eccentricity' class='form-label'> eccentricity (e) </label>
+                    <div class="mb-4 input-group">
+                      <span class='input-group-text'>e</span>
                       <input type='number' class='form-control' id='k:e' required step="0.0001">
+                      
                     </div>
 
-                    <div class="mb-2">
-                      <label for='o:theta' class='form-label'> theta (&Theta;) </label>
+                    <div class="mb-4 input-group">
+                      
+                      <span class='input-group-text'> &Theta;</span>
                       <input type='number' class='form-control' id='k:o' required step="0.0001">
+                      <span class='input-group-text'>&#176;</span>
+                      
                     </div>
 
                     <button class='btn btn-primary'> Calculate </button>
                   </form>
                 </div>
 
-                <div class="col-6 result mt-4 mb-4 text-center">
+                <div class="col result mt-4 mb-4 text-center">
                   <p class="fs-3">Result</p>
 
-                  <div class="h-50 w-75 bg-dark text-light mx-auto">
+                  <div class="h-75 w-75 bg-dark text-light mx-auto">
                     <p>result of computation is shown here...</p>
                     <p id='k:result' class='text-light'></p>
                   </div>
@@ -144,14 +149,16 @@ document.querySelector('#app').innerHTML = `
                 <form class='mt-3' id='f-e'>
                   <p>Use the form below to calculate eccentricity of an ellipse of a planet using Kepler's First Law</p>
 
-                  <div class='mb-3'>
-                    <label for='a:semi-major axis' class='form-label'> semi-major axis (a) </label>
+                  <div class='mb-5 input-group'>
+                  <span class='input-group-text'>a</span>
                     <input type='number' class='form-control' id='e:a' required step="0.0001">
+                    <span class='input-group-text'>km</span>
                   </div>
 
-                  <div class="mb-4">
-                    <label for='b:semi-minor axis' class='form-label'> semi-minor axis (b) </label>
+                  <div class="mb-5 input-group">
+                  <span class='input-group-text'>b</span>
                     <input type='number' class='form-control' id='e:b' required step="0.0001">
+                    <span class='input-group-text'>km</span>
                   </div>
 
                   <button class='btn btn-primary'> Calculate </button>
@@ -161,7 +168,7 @@ document.querySelector('#app').innerHTML = `
               <div class="col-6 result mt-4 mb-4 text-center">
                 <p class="fs-3">Result</p>
 
-                <div class="h-50 w-75 bg-dark text-light mx-auto">
+                <div class="h-75 w-75 bg-dark text-light mx-auto">
                   <p>result of computation is shown here...</p>
                   <p id='e:result' class=''></p>
                 </div>
