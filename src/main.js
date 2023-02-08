@@ -8,7 +8,7 @@ document.querySelector('#app').innerHTML = `
   <div class='container'>
     <div class=''>
       <h4 class='text-center'>
-        Kepler's First Law and Eccentricity Calculator
+        The Ellipsoid and it's Properties Calculator
         <hr />
       </h4>
     </div>
@@ -64,7 +64,7 @@ document.querySelector('#app').innerHTML = `
                     <div class='mb-4 input-group'>
                       <span class='input-group-text'>a</span>
                       <input type='number' class='form-control' id='k:a' required step="0.0001">
-                      <span class='input-group-text'>km</span>
+                      <span class='input-group-text'>m</span>
                     </div>
 
                     <div class="mb-4 input-group">
@@ -107,13 +107,13 @@ document.querySelector('#app').innerHTML = `
 
         <div class="eccentricity col ">
           <h4 class='text-center'>
-            Eccentricity (e)
+            First Eccentricity (e)
             <hr />
           </h4>
 
           <div class="row row-cols-2">
             <div class="col-5 formula-e">
-              <p> eccentricity (e) is given as...</p <br />
+              <p> first eccentricity (e) is given as...</p <br />
               <img src='${eccenImg}' class='rounded mx-auto d-block'>
               <p>where...</p>
 
@@ -152,13 +152,13 @@ document.querySelector('#app').innerHTML = `
                   <div class='mb-5 input-group'>
                   <span class='input-group-text'>a</span>
                     <input type='number' class='form-control' id='e:a' required step="0.0001">
-                    <span class='input-group-text'>km</span>
+                    <span class='input-group-text'>m</span>
                   </div>
 
                   <div class="mb-5 input-group">
                   <span class='input-group-text'>b</span>
                     <input type='number' class='form-control' id='e:b' required step="0.0001">
-                    <span class='input-group-text'>km</span>
+                    <span class='input-group-text'>m</span>
                   </div>
 
                   <button class='btn btn-primary'> Calculate </button>
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', (ready) => {
     document.getElementById('k:o').value = '';
 
     const r = kepler.calculator(+a, +e, +theta);
-    keplerPara.innerHTML = `when a = ${a} km, e = ${e} and &Theta; = ${theta}&#176;, r = ${r} km`;
+    keplerPara.innerHTML = `when a = ${a} m, e = ${e} and &Theta; = ${theta}&#176;, r = ${r} m`;
   });
 
   eccenForm.addEventListener('submit', (evt) => {
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', (ready) => {
     document.getElementById('e:b').value = '';
 
     const e = eccentricity.calculator(a, b);
-    eccenPara.innerHTML = `when a = ${a} km and b = ${b} km, e ${
+    eccenPara.innerHTML = `when a = ${a} m and b = ${b} m, e ${
       typeof e === 'number' ? ' = ' + e : e
     }`;
   });
