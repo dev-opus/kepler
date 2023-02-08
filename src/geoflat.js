@@ -1,6 +1,6 @@
 function calculator(a, b) {
-  const dividend = b / a;
-  const ans = a - dividend;
+  const subtract = a - b;
+  const ans = subtract / a;
 
   return ans.toFixed(3);
 }
