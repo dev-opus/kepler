@@ -2,7 +2,7 @@ import '../style.css';
 import keplerImg from './assets/kepler.svg';
 import eccenImg from './assets/eccen.svg';
 import minorImg from './assets/mia2.svg';
-import geoflatImg from './assets/gfl2.svg';
+import geoflatImg from './assets/gfl3.svg';
 
 import kepler from './kepler';
 import eccentricity from './eccentricity';
