@@ -1,9 +1,9 @@
 function calculator(a, b) {
-  const dividend = b ** 2 / a ** 2;
+  const dividend = b ** 2 / a;
 
   console.log({ dividend });
 
-  const sub = 1 - dividend;
+  const sub = a ** 2 - dividend;
 
   if (sub < 0) {
     return 'could not be determined because of negative sign in square-root';
