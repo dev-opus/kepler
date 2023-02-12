@@ -65,13 +65,13 @@ document.querySelector('#app').innerHTML = `
               <div class='mb-5 input-group'>
               <span class='input-group-text'>a</span>
                 <input type='number' class='form-control' id='s:a' required step="0.0001">
-                <span class='input-group-text'>m</span>
+                
               </div>
 
               <div class="mb-5 input-group">
               <span class='input-group-text'>f</span>
                 <input type='number' class='form-control' id='s:f' required step="0.0001">
-                <span class='input-group-text'>m</span>
+                
               </div>
 
               <button class='btn btn-primary'> Calculate </button>
@@ -140,13 +140,13 @@ document.querySelector('#app').innerHTML = `
               <div class='mb-5 input-group'>
               <span class='input-group-text'>a</span>
                 <input type='number' class='form-control' id='g:a' required step="0.0001">
-                <span class='input-group-text'>m</span>
+                
               </div>
 
               <div class="mb-5 input-group">
               <span class='input-group-text'>b</span>
                 <input type='number' class='form-control' id='g:b' required step="0.0001">
-                <span class='input-group-text'>m</span>
+                
               </div>
 
               <button class='btn btn-primary'> Calculate </button>
@@ -222,7 +222,7 @@ document.querySelector('#app').innerHTML = `
                     <div class='mb-4 input-group'>
                       <span class='input-group-text'>a</span>
                       <input type='number' class='form-control' id='k:a' required step="0.0001">
-                      <span class='input-group-text'>m</span>
+                      
                     </div>
 
                     <div class="mb-4 input-group">
@@ -235,7 +235,7 @@ document.querySelector('#app').innerHTML = `
                       
                       <span class='input-group-text'> &Theta;</span>
                       <input type='number' class='form-control' id='k:o' required step="0.0001">
-                      <span class='input-group-text'>&#176;</span>
+                      
                       
                     </div>
 
@@ -310,13 +310,13 @@ document.querySelector('#app').innerHTML = `
                   <div class='mb-5 input-group'>
                   <span class='input-group-text'>a</span>
                     <input type='number' class='form-control' id='e:a' required step="0.0001">
-                    <span class='input-group-text'>m</span>
+                    
                   </div>
 
                   <div class="mb-5 input-group">
                   <span class='input-group-text'>b</span>
                     <input type='number' class='form-control' id='e:b' required step="0.0001">
-                    <span class='input-group-text'>m</span>
+                    
                   </div>
 
                   <button class='btn btn-primary'> Calculate </button>
@@ -359,25 +359,85 @@ document.addEventListener('DOMContentLoaded', (ready) => {
   minorForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
+    let res = prompt('please enter 1 for meter or 2 for kilometer as unit.');
+
+    while (!res || +res !== 1 || +res !== 2) {
+      if (res && (+res === 1 || +res === 2)) break;
+
+      alert('Invalid input for choosing unit, only 1 or 2 accepted!');
+      res = prompt('please enter 1 for meter or 2 for kilometer as unit.');
+    }
+
     const a = document.getElementById('s:a').value;
     const f = document.getElementById('s:f').value;
 
+    document.getElementById('s:f').value = '';
+    document.getElementById('s:a').value = '';
+
     const b = minor.calculator(a, f);
-    minorPara.innerHTML = `when a = ${a}m and f = ${f}m, b = ${b}m`;
+    const message =
+      +res === 1
+        ? `when a = ${a}m and f = ${f}m, b = ${b}m`
+        : `when a = ${a}km and f = ${f}km, b = ${b}km`;
+
+    minorPara.innerHTML = message;
   });
 
   geoFlatForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
 
+    let res = prompt('please enter 1 for meter or 2 for kilometer as unit.');
+
+    while (!res || +res !== 1 || +res !== 2) {
+      if (res && (+res === 1 || +res === 2)) break;
+
+      alert('Invalid input for choosing unit, only 1 or 2 accepted!');
+      res = prompt('please enter 1 for meter or 2 for kilometer as unit.');
+    }
+
     const a = document.getElementById('g:a').value;
     const b = document.getElementById('g:b').value;
 
+    document.getElementById('g:a').value = '';
+    document.getElementById('g:b').value = '';
+
     const f = geoflat.calculator(a, b);
-    geoflatPara.innerHTML = `when a = ${a}m and b = ${b}m, f = ${f}m`;
+    const message =
+      +res === 1
+        ? `when a = ${a}m and b = ${b}m, f = ${f}m`
+        : `when a = ${a}km and b = ${b}km, f = ${f}km`;
+
+    geoflatPara.innerHTML = message;
   });
 
   keplerForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
+
+    let res = prompt('please enter 1 for meter or 2 for kilometer as unit.');
+
+    while (!res || +res !== 1 || +res !== 2) {
+      if (res && (+res === 1 || +res === 2)) break;
+
+      alert('Invalid input for choosing unit, only 1 or 2 accepted!');
+      res = prompt(
+        'please enter 1 for meter or 2 for kilometer as unit for semi-major axis.'
+      );
+    }
+
+    let res2 = prompt(
+      'please enter 1 for degree or 2 for radian as unit of angle.'
+    );
+
+    while (!res2 || +res2 !== 1 || +res2 !== 2) {
+      if (res && (+res === 1 || +res === 2)) break;
+
+      alert('Invalid input for choosing unit, only 1 or 2 accepted!');
+      res2 = prompt(
+        'please enter 1 for degree or 2 for radian as unit of angle.'
+      );
+    }
+
+    const convert = +res2 === 1 ? false : true;
 
     const a = document.getElementById('k:a').value;
     const e = document.getElementById('k:e').value;
@@ -388,12 +448,39 @@ document.addEventListener('DOMContentLoaded', (ready) => {
     document.getElementById('k:e').value = '';
     document.getElementById('k:o').value = '';
 
-    const r = kepler.calculator(+a, +e, +theta);
-    keplerPara.innerHTML = `when a = ${a} m, e = ${e} and &Theta; = ${theta}&#176;, r = ${r} m`;
+    const r = kepler.calculator(+a, +e, +theta, convert);
+    let message;
+
+    if (+res === 1 && +res2 === 1) {
+      message = `when a = ${a}m, e = ${e} and &Theta; = ${theta}&#176;, r = ${r}m`;
+    }
+
+    if (+res === 1 && +res2 === 2) {
+      message = `when a = ${a}m, e = ${e} and &Theta; = ${theta}rad, r = ${r}m`;
+    }
+
+    if (+res === 2 && +res2 === 1) {
+      message = `when a = ${a}km, e = ${e} and &Theta; = ${theta}&#176;, r = ${r}km`;
+    }
+
+    if (+res === 2 && +res2 === 2) {
+      message = `when a = ${a}km, e = ${e} and &Theta; = ${theta}rad;, r = ${r}km`;
+    }
+
+    keplerPara.innerHTML = message;
   });
 
   eccenForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
+
+    let res = prompt('please enter 1 for meter or 2 for kilometer as unit.');
+
+    while (!res || +res !== 1 || +res !== 2) {
+      if (res && (+res === 1 || +res === 2)) break;
+
+      alert('Invalid input for choosing unit, only 1 or 2 accepted!');
+      res = prompt('please enter 1 for meter or 2 for kilometer as unit.');
+    }
 
     const a = document.getElementById('e:a').value;
     const b = document.getElementById('e:b').value;
@@ -402,9 +489,16 @@ document.addEventListener('DOMContentLoaded', (ready) => {
     document.getElementById('e:b').value = '';
 
     const e = eccentricity.calculator(a, b);
-    eccenPara.innerHTML = `when a = ${a} m and b = ${b} m, e ${
-      typeof e === 'number' ? ' = ' + e : e
-    }`;
+    const message =
+      +res === 1
+        ? `when a = ${a}m and b = ${b}m, e ${
+            typeof e === 'number' ? ' = ' + e : e
+          }`
+        : `when a = ${a}km and b = ${b}km, e ${
+            typeof e === 'number' ? ' = ' + e : e
+          }`;
+
+    eccenPara.innerHTML = message;
   });
 
   const keplerClear = document.getElementById('k:c');
